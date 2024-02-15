@@ -15,17 +15,20 @@ export const handleRegister = async (req, res) => {
     }
     const { username, email, password } = value;
     const hashPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashPassword });
+    const newUser = new User({ username, email, password: hashPassword });
     const verificationToken = jwt.sign(
-      { id: user._id },
+
+      { id: newUser._id },
       process.env.JWT_SECRET_KEY,
       {
         expiresIn: "1d",
       }
     );
-    await user.save();
-    sendingEmail(verificationToken, user.email);
-    res.json({ success: true, user });
+    console.log("verificationtoken", verificationToken)
+
+    await newUser.save();
+    sendingEmail(verificationToken, newUser.email);
+    res.json({ success: true, newUser });
   } catch (error) {
     console.log("🚀 ~ error in Registering:", error.message);
     res.status(500).json({ success: false, error: error.message });
@@ -52,6 +55,7 @@ export const handleSignIn = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
       expiresIn: "1d",
     });
+    console.log("signin token", token)
     res.json({ token, user });
   } catch (error) {
     console.log("🚀 ~ error in sigIn:", error.message);
@@ -62,8 +66,8 @@ export const handleSignIn = async (req, res) => {
 
 export const confirmEmail = async (req, res) => {
   const token = jwt.verify(req.params.token, process.env.JWT_SECRET_KEY);
-
-  try {
+console.log("confirmmail token", token)
+   try {
     if (token) {
       const user = await User.findByIdAndUpdate(
         token.id,

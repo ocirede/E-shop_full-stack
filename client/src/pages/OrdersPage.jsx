@@ -1,7 +1,9 @@
-import React from 'react'
+import CheckoutForm from "../components/CheckoutForm";
 
 export default function OrdersPage() {
   return (
-    <div>OrdersPage</div>
-  )
+    <div className="mt-40">
+      <CheckoutForm />
+    </div>
+  );
 }

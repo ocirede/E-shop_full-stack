@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../context/UserContext";
 import { ArrowLeft } from "lucide-react";
-export default function SignInForm() {
-    const { handleSignIn, errors } = useUserContext();
+import { GridLoader } from "react-spinners";
 
+export default function SignInForm() {
+    const { handleSignIn, errors, isLoading, IsSubmitted  } = useUserContext();
+  console.log(errors)
     return (
         <>
+         {isLoading && !IsSubmitted && (
+        <div className=" bg-sage-green flex justify-center items-center h-screen gap-2">
+          <GridLoader />
+          loading...
+        </div>
+      )}
     <div className=" gap-1 h-12 items-center flex  ml-4 mt-7">
             <ArrowLeft className=" w-8 h-8" />
             <Link to="/">
@@ -15,13 +23,14 @@ export default function SignInForm() {
           </div>
     
     
-        <div className=" gap-40 flex justify-center items-center h-screen bg-gray-200">
+        <div className=" gap-40 flex justify-center items-center h-screen bg-sage-green">
             <img className=" w-1/5 shadow-2xl" src="https://i.pinimg.com/736x/5d/52/7a/5d527acb1b3090f6eed7b202c788a856.jpg"></img>
+           
           <form
             className="max-w-md bg-white shadow-2xl rounded px-8 pt-6 pb-8 mb-4 w-full flex flex-col justify-center"
             onSubmit={handleSignIn}
           >
-             {errors ? (
+              {errors ? (
                 <ul className="text-red-500 mb-10">
                   {errors.map((err, i) => (
                     <li className="list-disc py-2" key={i}>
@@ -31,6 +40,7 @@ export default function SignInForm() {
                 </ul>
               ) : null}
             <div className="mb-4">
+          
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="email"

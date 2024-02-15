@@ -4,13 +4,12 @@ function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-    console.log("clicked")
   };
   return (
     <div className="relative inline-block text-left">
       <button
         onClick={toggleDropdown}
-        className="bg-green-700 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded inline-flex items-center"
+        className="bg-green-600 hover:bg-green-400 text-white font-semibold py-2 px-4 rounded inline-flex items-center"
       >
         Menu
         <svg
@@ -27,7 +26,7 @@ function DropdownMenu() {
         </svg>
       </button>
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className=" z-10 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
@@ -35,7 +34,7 @@ function DropdownMenu() {
             aria-labelledby="options-menu"
           >
             <a
-              href="profileform"
+              href="profile"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
@@ -44,7 +43,7 @@ function DropdownMenu() {
 
             <a href="orders"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              role="menuitem">Your orders</a>
+              role="menuitem">Place orders</a>
           </div>
         </div>
       )}

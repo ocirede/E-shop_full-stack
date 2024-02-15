@@ -3,6 +3,7 @@ import cors from "cors";
 import { port } from "./lib/env.vars.js";
 import connectDB from "./lib/connectDB.js";
 import authRoutes from "./routes/authRoutes.js";
+import productsRoutes from "./routes/productsRoutes.js";
 
 
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/user", authRoutes);
+app.use("/products", productsRoutes)
 app.use("/uploads", express.static("uploads"));
 
 

@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
+    "insert": "node data/ProductData.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

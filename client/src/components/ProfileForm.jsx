@@ -1,5 +1,5 @@
 import { Upload } from "lucide-react";
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../context/UserContext";
 
 export default function ProfileForm() {
     const { handleUpdate } = useUserContext();
@@ -81,7 +81,7 @@ export default function ProfileForm() {
         />
       </div>{" "}
       <div className="flex justify-center">
-        <button className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-lg">
+        <button className="bg-green-600 hover:bg-green-400 text-white font-bold py-2 px-4 rounded-lg">
           Update
         </button>
       </div>

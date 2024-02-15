@@ -17,13 +17,10 @@ const UserProvider = ({ children }) => {
     const token = localStorage.getItem("token");
     console.log("token", token);
     if (token) {
-      try {
         const response = await axios.get(baseURL + "/user/loggeduser");
         setUser(response.data);
         console.log("fetchedUser =====>", response.data);
-      } catch (error) {
-        console.log(error);
-      }
+     
     } else {
       // navigate("/");
     }
@@ -77,6 +74,7 @@ const UserProvider = ({ children }) => {
       username: e.target.username.value,
       password: e.target.password.value,
     };
+    setErrors(null);
 
     try {
       const { data: loggeduser } = await axios.post(baseURL + "/user/signin", body);
@@ -84,17 +82,29 @@ const UserProvider = ({ children }) => {
       console.log("set token", loggeduser);
       e.target.reset();
       setUser(loggeduser);
+      setErrors(null);
       console.log("loggedinuser",loggeduser);
       console.log("usestate user", user)
       window.location.replace("/");
     } catch (error) {
       console.log(error);
+      setErrors(error.response.data.message);
+
     }
   };
 
   const handeLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("ShoppingCart")
     navigate("/signin");
+  };
+
+  const handleredirect = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/signin");
+    }, 5000);
   };
 
   return (
@@ -105,9 +115,11 @@ const UserProvider = ({ children }) => {
         errors,
         handleSignIn,
         isLoading,
+        setIsLoading,
         handeLogout,
         user,
-        handleUpdate
+        handleUpdate,
+        handleredirect
       }}
     >
       {children}

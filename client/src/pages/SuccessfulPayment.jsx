@@ -1,23 +1,28 @@
 import React from "react";
 import { useProductsContext } from "../context/ProductContext";
-import {PacmanLoader} from "react-spinners";
-
+import { ClimbingBoxLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 function SuccessfulPayment() {
-  const {  IsSubmitted, isLoading } =
-    useProductsContext();
+  const { isRedirecting } = useProductsContext();
 
-  return  (
+  return (
     <>
-    {isLoading && !IsSubmitted && (
-      <div className=" bg-sage-green flex justify-center items-center h-screen ">
-        <PacmanLoader />
-      </div>
-    )}
-    </>
-  )
-  
+      {isRedirecting && (
+        <div className=" bg-sage-green flex justify-center items-center h-screen ">
+          <ClimbingBoxLoader />
+          <span className=" text-2xl font-semibold">
+            {" "}
+            Please do not close the page while we are prosessing your payment
+          </span>
+        </div>
+      )}
 
+      <div>
+        <span>Transaction Successful!! click <Link to="/">here</Link> </span>
+      </div>
+    </>
+  );
 }
 
 export default SuccessfulPayment;

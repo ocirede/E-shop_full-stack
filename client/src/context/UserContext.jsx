@@ -104,7 +104,7 @@ const UserProvider = ({ children }) => {
     setTimeout(() => {
       setIsLoading(false);
       navigate("/signin");
-    }, 5000);
+    }, 3000);
   };
 
   return (

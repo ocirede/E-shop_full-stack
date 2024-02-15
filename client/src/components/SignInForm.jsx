@@ -4,11 +4,10 @@ import { ArrowLeft } from "lucide-react";
 import { GridLoader } from "react-spinners";
 
 export default function SignInForm() {
-    const { handleSignIn, errors, isLoading, IsSubmitted  } = useUserContext();
-  console.log(errors)
+    const { handleSignIn, errors, isLoading} = useUserContext();
     return (
         <>
-         {isLoading && !IsSubmitted && (
+         {isLoading && (
         <div className=" bg-sage-green flex justify-center items-center h-screen gap-2">
           <GridLoader />
           loading...

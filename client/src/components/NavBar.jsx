@@ -8,7 +8,7 @@ import CategoryMenu from "./CategoryMenu.jsx";
 
 const NavBar = () => {
   const { handeLogout, user } = useUserContext();
-  const { selectedProduct } = useProductsContext();
+  const { selectedProduct, handleResetCategoryClick } = useProductsContext();
   const userUppercase =
     user?.username?.split(" ")[0].charAt(0).toUpperCase() +
     user?.username?.slice(1);
@@ -24,17 +24,11 @@ const NavBar = () => {
             <h2 className=" text-4xl font-bold  italic text-white">Weedout</h2>
           </div>
           <CategoryMenu />
-
-          {/* <input
-            className=" w-1/3 h-12 border text-center"
-            type="text"
-            placeholder="SEARCH PRODUCTS"
-          /> */}
           {user ? (
             <div className="  w-1/2  flex justify-evenly  items-center gap-10">
               <Link to="/">
                 {" "}
-                <HomeIcon className=" text-white" />
+                <HomeIcon onClick={() => handleResetCategoryClick()} className=" text-white" />
               </Link>
 
               <div className=" flex items-center gap-4">

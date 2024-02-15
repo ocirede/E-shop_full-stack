@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useProductsContext } from "../context/ProductContext";
 
 function CategoryMenu() {
-  const { fetchProducts, handleCategoryClick} = useProductsContext();
-  const [isOpen, setIsOpen] = useState(false);
+  const {  handleCategoryClick, isOpen, setIsOpen} = useProductsContext();
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -49,7 +48,7 @@ function CategoryMenu() {
               role="menuitem"
               id="menu-item-0"
               category="cbdoil"
-              onClick={() => handleCategoryClick("cbd oil")}
+              onClick={() => handleCategoryClick("CBD Oil")}
             >
               CBD Oil
             </button>
@@ -59,7 +58,7 @@ function CategoryMenu() {
               role="menuitem"
               id="menu-item-1"
               category="gummies"
-              onClick={() => fetchProducts()}
+              onClick={() => handleCategoryClick( "Gummies")}
             >
               Gummies
             </button>
@@ -69,7 +68,7 @@ function CategoryMenu() {
               role="menuitem"
               id="menu-item-2"
               category="balm"
-              onClick={() => fetchProducts()}
+              onClick={() => handleCategoryClick( "CBD balm")}
             >
               CBD Balm
             </button>
@@ -79,7 +78,7 @@ function CategoryMenu() {
               role="menuitem"
               id="menu-item-2"
               category="all"
-              onClick={() => fetchProducts()}
+              onClick={() => handleCategoryClick("All")}
             >
               All
             </button>

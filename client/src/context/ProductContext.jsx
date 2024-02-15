@@ -10,16 +10,17 @@ const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [productCounts, setProductCounts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([]);
-  const [filteredProduct, setFilteredProduct] = useState([])
-  const [IsSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (category = "all") => {
     try {
-      const response = await axios.get(baseURL + `/products/getall`);
-      console.log(response)
+      const response = await axios.get(
+        baseURL + `/products/getall?category=${category}`
+      );
+      console.log("===>", response);
       setProducts(response.data);
     } catch (error) {
       console.error("Error fetching the products", error);
@@ -32,10 +33,8 @@ const ProductsProvider = ({ children }) => {
     if (storedItems) {
       const parsedItems = JSON.parse(storedItems);
       setSelectedProduct(parsedItems);
-    };
+    }
   }, []);
-
-
 
   const handleAddToCart = async (productId) => {
     try {
@@ -105,34 +104,25 @@ const ProductsProvider = ({ children }) => {
   // to be fixed with Ghassan
   const placeOrder = (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setIsRedirecting(true);
     setTimeout(() => {
-      setIsLoading(false);
-      navigate("/successufulpayment");
-    }, 5000);
+      window.location.replace("/successufulpayment");
+      setIsRedirecting(false);
+    }, 4000);
     localStorage.removeItem("ShoppingCart");
     fetchProducts();
     e.target.reset();
   };
 
   const handleCategoryClick = (category) => {
+    setIsOpen(false);
     fetchProducts(category);
+    navigate("/");
   };
-  // const fetchFilteredProduct = async (category) => {
-  // const filterProducts = products.filter((product) => product.category.toLowerCase().includes(category));
-  // setFilteredProduct(filterProducts);
-  // console.log(filteredProduct);
 
-  //   const response = await axios.get(
-  //     baseURL +
-  //       `/products/getall?products=${category}`
-  //   );
-  //   console.log("🚀 ~ response:", response);
-
-  //   if (response.data.success) setUsers(response.data.users);
-
-  // };
-
+  const handleResetCategoryClick = () => {
+    fetchProducts();
+  };
 
   return (
     <ProductsContext.Provider
@@ -143,12 +133,13 @@ const ProductsProvider = ({ children }) => {
         selectedProduct,
         deleteItem,
         handleCheckout,
-        IsSubmitted,
-        isLoading,
+        isRedirecting,
         placeOrder,
         fetchProducts,
-        handleCategoryClick
-        
+        handleCategoryClick,
+        isOpen,
+        setIsOpen,
+        handleResetCategoryClick,
       }}
     >
       {children}

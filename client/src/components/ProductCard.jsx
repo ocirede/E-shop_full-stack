@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
           )
         ) : (
             <button
-              className="bg-green-600 hover:bg-green-400 text-white py-2 px-4 rounded w-full"
+              className="bg-green-600 hover:bg-green-400 text-white py-2 px-4 rounded "
             >
               Add to Cart ({productCounts[product._id] || 0})
             </button>

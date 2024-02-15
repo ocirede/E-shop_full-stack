@@ -8,7 +8,7 @@ export default function SignInForm() {
     return (
         <>
          {isLoading && (
-        <div className=" bg-sage-green flex justify-center items-center h-screen gap-2">
+        <div className="  flex justify-center items-center h-screen gap-2">
           <GridLoader />
           loading...
         </div>

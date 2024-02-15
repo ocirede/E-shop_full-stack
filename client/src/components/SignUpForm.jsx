@@ -16,13 +16,13 @@ export default function SignUpForm() {
       </div>
 
       {isLoading && !IsSubmitted && (
-        <div className=" bg-sage-green flex justify-center items-center h-screen ">
+        <div className="  flex justify-center items-center h-screen ">
           <PacmanLoader />
         </div>
       )}
 
       {IsSubmitted && !isLoading && (
-        <div className=" bg-sage-green flex justify-center items-center h-screen">
+        <div className="  flex justify-center items-center h-screen">
           <div className="  bg-slate-50 h-48 w-2/5 flex items-center justify-center shadow-xl">
             <h2 className=" text-3xl  text-center">
               We have sent you an email to verify your account.

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../context/ProductContext";
 import { useUserContext } from "../context/UserContext";
+import { ClimbingBoxLoader } from "react-spinners";
 
 function CheckoutForm() {
   const { user } = useUserContext();
-  const { selectedProduct, placeOrder} = useProductsContext();
+  const { selectedProduct, placeOrder, isRedirecting} = useProductsContext();
 
   let total = 0;
   selectedProduct.forEach((product) => {
@@ -19,6 +20,12 @@ function CheckoutForm() {
 
   return (
     <>   
+    { isRedirecting ? (
+      <div className=" w-full h-screen  justify-center items-center flex felx-col gap-4 ">
+        <ClimbingBoxLoader/>
+      <p className=" text-2xl font-semibold">Please do not close the page while processing your payment</p>
+      </div>
+    ) : 
      
     <div className="relative mx-auto w-full bg-white">
       <div className="grid min-h-screen grid-cols-10">
@@ -221,6 +228,7 @@ function CheckoutForm() {
         </div>
       </div>
     </div>
+    }
     </>
 
   );

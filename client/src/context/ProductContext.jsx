@@ -101,16 +101,16 @@ const ProductsProvider = ({ children }) => {
     navigate("/orders");
   };
 
-  // to be fixed with Ghassan
   const placeOrder = (e) => {
     e.preventDefault();
     setIsRedirecting(true);
+
     setTimeout(() => {
-      window.location.replace("/successufulpayment");
+      navigate("/successufulpayment");
       setIsRedirecting(false);
     }, 4000);
     localStorage.removeItem("ShoppingCart");
-    fetchProducts();
+    setSelectedProduct([])
     e.target.reset();
   };
 

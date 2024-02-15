@@ -1,6 +1,5 @@
 import React from "react";
 import { useProductsContext } from "../context/ProductContext";
-import { ClimbingBoxLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 
 function SuccessfulPayment() {
@@ -8,18 +7,12 @@ function SuccessfulPayment() {
 
   return (
     <>
-      {isRedirecting && (
-        <div className=" bg-sage-green flex justify-center items-center h-screen ">
-          <ClimbingBoxLoader />
-          <span className=" text-2xl font-semibold">
-            {" "}
-            Please do not close the page while we are prosessing your payment
+      <div className=" w.full h-screen bg-white mt-12 flex justify-center items-center">
+        <div className=" mt-40  bg-sage-green w-1/3 h-1/5 flex justify-center items-center ">
+          <span className=" text-2xl">
+            Transaction Successful!! click <Link className=" text-blue-500 l" to="/">here</Link>{" "}
           </span>
         </div>
-      )}
-
-      <div>
-        <span>Transaction Successful!! click <Link to="/">here</Link> </span>
       </div>
     </>
   );

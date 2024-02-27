@@ -12,7 +12,7 @@ const ProductsProvider = ({ children }) => {
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
- const baseURL = import.meta.env.BASE_URL;
+ const baseURL = import.meta.env.VITE_BASE_URL;
 
   const navigate = useNavigate();
 

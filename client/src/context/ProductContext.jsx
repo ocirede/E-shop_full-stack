@@ -13,7 +13,7 @@ const ProductsProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
  const baseURL = import.meta.env.VITE_BASE_URL;
-
+ console.log(baseURL);
   const navigate = useNavigate();
 
   const fetchProducts = async (category = "all") => {

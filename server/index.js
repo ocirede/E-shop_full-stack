@@ -9,7 +9,7 @@ import productsRoutes from "./routes/productsRoutes.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin: "https://e-shop-server-gamma.vercel.app"}));
+app.use(cors());
 app.use("/user", authRoutes);
 app.use("/products", productsRoutes)
 app.use("/uploads", express.static("uploads"));

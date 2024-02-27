@@ -27,7 +27,7 @@ export default function ShoppingPage() {
         <h2 className=" text-3xl font-bold	">Shopping Cart</h2>
         {selectedProduct.length === 0 ? (
           
-          <p>Looks like your shopping cart is empty! Let's explore our <Link className=" text-blue-500" to="/" >store</Link> store and add some items to your cart for a delightful shopping experience."</p>
+          <p>Looks like your shopping cart is empty! Let's explore our <Link className=" text-blue-500" to="/" >store</Link> store and add some items to your cart for a delightful shopping experience.</p>
         ) : (
           <div className="p-4">
             {selectedProduct.map((product) => (

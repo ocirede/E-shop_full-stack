@@ -1,5 +1,4 @@
 import axios from "axios";
-import { baseURL } from "../config/api.js";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +11,8 @@ const ProductsProvider = ({ children }) => {
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+ const baseURL = import.meta.env.BASE_URL;
 
   const navigate = useNavigate();
 
@@ -72,7 +73,6 @@ const ProductsProvider = ({ children }) => {
         }
         return product;
       });
-      fetchProducts();
       setProducts(updatedProducts);
     } catch (error) {
       console.error("Error updating product quantity:", error);

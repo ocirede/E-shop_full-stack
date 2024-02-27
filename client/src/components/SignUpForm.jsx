@@ -23,7 +23,7 @@ export default function SignUpForm() {
 
       {IsSubmitted && !isLoading && (
         <div className="  flex justify-center items-center h-screen">
-          <div className="  bg-slate-50 h-48 w-2/5 flex items-center justify-center shadow-xl">
+          <div className="  bg-sage-green h-48 w-2/5 flex items-center justify-center shadow-xl">
             <h2 className=" text-3xl  text-center">
               We have sent you an email to verify your account.
               <br /> Check your inbox!!
@@ -44,7 +44,7 @@ export default function SignUpForm() {
         </div>
 
         <form
-          className="max-w-md  bg-white shadow-2xl rounded px-8 pt-6 pb-8 mb-4 w-1/5 h-2/5 flex flex-col justify-center"
+          className="max-w-md  bg-white shadow-2xl rounded px-8 pt-6 pb-8  w-1/4  flex flex-col justify-center"
           onSubmit={handleRegistration}
         >
           {errors ? (
@@ -56,7 +56,7 @@ export default function SignUpForm() {
               ))}
             </ul>
           ) : null}
-          <div className="mb-4  ">
+          <div className="">
             <div className="mr-2">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"

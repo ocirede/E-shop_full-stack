@@ -1,5 +1,4 @@
 import axios from "../config/axios-auth.js";
-import { baseURL } from "../config/api.js";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +11,9 @@ const UserProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
+
+  const baseURL = import.meta.env.BASE_URL;
+
 
   const fetchUser = async () => {
     const token = localStorage.getItem("token");
@@ -38,7 +40,6 @@ const UserProvider = ({ children }) => {
       const {data: updatedProfile} = await axios.put(baseURL + `/user/updateprofile/${user._id}`, formdata);
       e.target.reset();
       setUser(updatedProfile);
-      window.location.replace("/profile");
     } catch (error) {
       console.log(error);
     }

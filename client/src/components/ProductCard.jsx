@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useProductsContext } from "../context/ProductContext";
 import { useUserContext } from "../context/UserContext";
 
@@ -6,7 +7,7 @@ const ProductCard = ({ product }) => {
   const { user } = useUserContext();
 
   return (
-    <div className="border rounded-md p-16 flex flex-col gap-5">
+    <div className="border rounded-md p-20 flex flex-col gap-5">
       <div>
         <img src={product.image} alt={product.name} className="w-full mb-4" />
         <h3 className="text-lg font-semibold">{product.name}</h3>
@@ -31,7 +32,7 @@ const ProductCard = ({ product }) => {
         {user ? (
           product.quantity === 0 ? (
             <button
-              className="bg-red-500 hover:bg-red-400 text-white py-2 px-4 rounded w-full disabled"
+              className="bg-red-500 hover:bg-red-400 text-white py-2 px-4 rounded  disabled"
               disabled
             >
               Out of Stock
@@ -48,7 +49,9 @@ const ProductCard = ({ product }) => {
             <button
               className="bg-green-600 hover:bg-green-400 text-white py-2 px-4 rounded "
             >
+              <Link to="/signin">
               Add to Cart ({productCounts[product._id] || 0})
+              </Link>
             </button>
         )}
       </div>

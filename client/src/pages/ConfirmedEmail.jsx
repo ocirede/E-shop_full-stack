@@ -30,8 +30,8 @@ export default function ConfirmedEmail() {
 
   return (
     <>
-      <div className=" bg-sage-green flex justify-center items-center h-screen">
-        <div className=" text-3xl bg-slate-50 h-48 w-2/5 flex items-center justify-center shadow-xl">
+      <div className=" flex justify-center items-center h-screen">
+        <div className=" text-3xl bg-sage-green h-48 w-2/5 flex items-center justify-center shadow-xl">
           <h1>
             Your email was successfully verified click{" "}
             <Link

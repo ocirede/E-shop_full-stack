@@ -66,7 +66,7 @@ const NavBar = () => {
               </button>
             </div>
           ) : (
-            <div className=" w-1/3 ml-28 flex gap-20">
+            <div className=" w-1/3 ml-28 flex gap-20 text-white">
               <Link to="/signup">Sign-up</Link>
               <Link to="/signin">Sign-in</Link>
             </div>

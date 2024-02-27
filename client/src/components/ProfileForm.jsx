@@ -12,7 +12,7 @@ export default function ProfileForm() {
     >
       <label className="block text-center mb-4">
         <Upload className="cursor-pointer w-12 h-12 mx-auto text-gray-600" />
-        <p className="text-gray-700">Profile picture</p>
+        <p className="text-gray-700">Upload</p>
 
         <input className="hidden" name="profilePicture" type="file" />
       </label>
